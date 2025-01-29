@@ -2,10 +2,10 @@ This is a simple Full stack Web Application that aims to give every user a space
 Hence the name Noter.
 
 Things I have done:
-1. Downloaded nodemon, prettier, express, mongoose, cors, cookie-parser
+1. Downloaded nodemon, prettier, express, mongoose, cors,          cookie-parser, mongoose-aggregate-paginate-v2, bcrypt, jsonwebtoken
 2. Changes in package.json: 
     "type" : "modules"
-    "dev" : nodemon -r dotenv/config --experimental-json-modules src/index.js
+    "dev" : nodemon -r dotenv/config --experimental-json-modules src/index.js 
 3. Folders i have made:
     models, controllers, middlewares, utils, db, routes
 4. 
