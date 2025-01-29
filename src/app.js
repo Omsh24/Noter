@@ -10,8 +10,11 @@ app.use(cors({
 }))
 
 app.use(express.json({limit: "16kb"}))
+// urls often contain special characters, this line encodes it
 app.use(express.urlencoded({extended: true, limit: "16kb"}))
+// this stores all the files into the public folder
 app.use(express.static("public"))
+// parses cookies from incomming requests and stores them in req.cookie
 app.use(cookieParser())
 
 export { app };

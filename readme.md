@@ -15,4 +15,4 @@ Things to Note:
 2. Always try to wrap everything into a try-catch block.
 3. Try to always use .js extention in all files even if not neccessary.
 4. Everytime there is a change in .env file we have to restart the server manually, this cannot be done by nodemon.
-5. 
+5. Cors - allows the backend and frontend to communicate with each other while running on different ports.
