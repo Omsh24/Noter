@@ -1,1 +1,3 @@
-export const DB_NAME = "noter"
+const DB_NAME = "noter";
+
+export { DB_NAME };
