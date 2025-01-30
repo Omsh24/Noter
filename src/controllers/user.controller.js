@@ -75,7 +75,7 @@ const registerUser = asyncHandler( async (req, res) => {
     return res.status(201).json(
         new ApiResponse(200, createdUser, "User created Successfully")
     )
-} )
+} );
 
 const loginUser = asyncHandler( async (req, res) => {
     // request body se data le aao
@@ -129,4 +129,36 @@ const loginUser = asyncHandler( async (req, res) => {
     )
 } );
 
-export { registerUser, loginUser };
+const logoutUser = asyncHandler( async (req, res) => {
+    // here we get access to req.user from the auth.middleware
+    if (!req.user) {
+        throw new ApiError(401, "Unauthorized: User not found");
+    }
+
+    // to logout the user we will have to erase their refresh Token
+    await User.findByIdAndUpdate(
+        req.user._id,
+        {
+            $set: {
+                refreshToken: undefined
+            }
+        },
+        {
+            new: true
+        }
+    )
+
+    const options = {
+        // making it so that cookies can only be modified on server
+        httpOnly: true,
+        secure: true
+    }
+
+    return res.status(200)
+    .clearCookie("accessToken", options)
+    .clearCookie("refreshToken", options)
+    .json(new ApiResponse(200, {}, "User logged out successfully"))
+
+} );
+
+export { registerUser, loginUser, logoutUser };

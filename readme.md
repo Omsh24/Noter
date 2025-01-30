@@ -17,4 +17,6 @@ Things to Note:
 4. Everytime there is a change in .env file we have to restart the server manually, this cannot be done by nodemon.
 5. Cors - allows the backend and frontend to communicate with each other while running on different ports.
 6. To add the functionality to upload files like videos and image we have to use something like multer and cloudinary to store them, they will be shown in website using url.
+7. We can use '_' in place of parameters that have remained unused, such as res in auth.middleware.js.
+8. For activities such as logout we have to use the auth.middleware since we need to verify that the user is logged in in order to log them out.
 
