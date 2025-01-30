@@ -17,4 +17,9 @@ app.use(express.static("public"))
 // parses cookies from incomming requests and stores them in req.cookie
 app.use(cookieParser())
 
+// importing routes
+import userRoute from "./routes/user.routes.js";
+
+app.use("/api/v1/users", userRoute)
+
 export { app };

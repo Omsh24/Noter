@@ -8,7 +8,7 @@ Things I have done:
     "dev" : nodemon -r dotenv/config --experimental-json-modules src/index.js 
 3. Folders i have made:
     models, controllers, middlewares, utils, db, routes
-4. 
+4. I have made a asyncHandler so I wouldn't have to wrap everything   within try-catch or promise.
 
 Things to Note:
 1. Database is always in another continent: So always use async await statements whenever trying to connect to the database.
@@ -16,3 +16,5 @@ Things to Note:
 3. Try to always use .js extention in all files even if not neccessary.
 4. Everytime there is a change in .env file we have to restart the server manually, this cannot be done by nodemon.
 5. Cors - allows the backend and frontend to communicate with each other while running on different ports.
+6. To add the functionality to upload files like videos and image we have to use something like multer and cloudinary to store them, they will be shown in website using url.
+

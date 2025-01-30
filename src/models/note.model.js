@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
 const noteSchema = new mongoose.Schema({
     title: {
@@ -21,5 +22,7 @@ const noteSchema = new mongoose.Schema({
         default: Date.now()
     }
 })
+
+noteSchema.plugin(mongooseAggregatePaginate)
 
 export const Note = mongoose.model("Note", noteSchema);
