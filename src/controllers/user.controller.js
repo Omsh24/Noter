@@ -3,21 +3,21 @@ import { asyncHandler } from "../utilis/asyncHandler.js";
 import { ApiError } from "../utilis/ApiError.js";
 import { User } from "../models/user.model.js";
 import { ApiResponse } from "../utilis/ApiResponse.js";
-import pkg from "jsonwebtoken";
-const { jwt } = pkg;
+import jwt from "jsonwebtoken";
 
 const generateAccessAndRefreshToken = async (userId) => {
     try {
         const user = await User.findById(userId)
         const accessToken = user.generateAccessToken()
         const refreshToken = user.generateRefreshToken()
-
+    
         user.refreshToken = refreshToken
-        await user.save({ validateBeforeSave: true })
+        await user.save({ validateBeforeSave: false })
 
         return { accessToken, refreshToken }
+
     } catch (error) {
-        throw new ApiError(500, "Something went wrong while generating the access and refresh token")
+        throw new ApiError(500, "Something went wrong while generating refresh and access tokens")
     }
 }
 
