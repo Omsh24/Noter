@@ -161,4 +161,71 @@ const logoutUser = asyncHandler( async (req, res) => {
 
 } );
 
-export { registerUser, loginUser, logoutUser };
+const changePassword = asyncHandler( async (req, res) => {
+    const { oldPassword, newPassword } = req.body
+
+    const user = User.findById(req.user?._id)
+    const passwordCheck = await user.isPasswordCorrect(oldPassword)
+
+    if(!passwordCheck){
+        throw new ApiError(401, "Inavlide user Password")
+    }
+
+    user.password = newPassword
+
+    await user.save({ validateBeforeSave: false })
+
+    return res.status(200).json(new ApiResponse(200, {}, "Password changed Successfully"))
+} );
+
+// It is easy to get current user since we will be going through auth middleware
+const getCurrentUser = asyncHandler( async (req, res) => {
+    return res.status(200).json(
+        new ApiResponse(201, req.user, "Fetched Current User Successfully")
+    )
+} )
+
+const updateAccountDetails = asyncHandler(async (req, res) => {
+    const {username, email} = req.body
+
+    if(!username || !email){
+        throw new ApiError(400, "All fields are required")
+    }
+
+    const user = await User.findByIdAndUpdate(
+        req.user?._id,
+        {
+            // here we use mongodb operators
+            $set: {
+                // both of these syntax are correct
+                username,
+                email: email,
+            }
+        },
+        {new: true}
+    ).select("-password")
+
+    return res.status(200).json(new ApiResponse(200, user, "Account details Updated successfully"))
+})
+
+const getNoteHistory = asyncHandler( async (req, res) => {
+    const user = await User.findById(req.user?._id)
+
+    if(!user){
+        throw new ApiError(402, "No user found")
+    }
+
+    return res.status(200).json(
+        new ApiResponse(201, user.noteHistory, "Note History fetched Successfully")
+    )
+} )
+
+export { 
+    registerUser, 
+    loginUser, 
+    logoutUser,
+    changePassword,
+    getCurrentUser,
+    updateAccountDetails,
+    getNoteHistory
+};
