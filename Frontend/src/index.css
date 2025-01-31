@@ -1,4 +1,8 @@
+@tailwind utilities;
+
 @import "tailwindcss";
+
+
 
 *{
   margin: 0;
