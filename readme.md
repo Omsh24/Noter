@@ -9,6 +9,7 @@ Things I have done:
 3. Folders i have made:
     models, controllers, middlewares, utils, db, routes
 4. I have made a asyncHandler so I wouldn't have to wrap everything   within try-catch or promise.
+5. All the authenticated user work such as logout and note making and getting is validated throught a verifyJWT function that is present in auth.middleware.js
 
 Things to Note:
 1. Database is always in another continent: So always use async await statements whenever trying to connect to the database.
