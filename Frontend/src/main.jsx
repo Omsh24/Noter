@@ -3,9 +3,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
+import { StatusProvider } from './Context/StatusContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <App />
+    <StatusProvider>
+      <App />
+    </StatusProvider>
   </BrowserRouter>,
 )

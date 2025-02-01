@@ -4,10 +4,18 @@ import cors from "cors";
 
 const app = express();
 
+const whitelist = ['http://localhost:5173']; // List your frontend origin(s) here
 app.use(cors({
-    origin: process.env.CORS_ORIGIN,
-    credentials: true
-}))
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      // Allow the request if the origin is in the whitelist or no origin (e.g., testing)
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'), false);
+    }
+  },
+  credentials: true, // Allow sending cookies/credentials with the request
+}));
 
 app.use(express.json({limit: "16kb"}))
 // urls often contain special characters, this line encodes it

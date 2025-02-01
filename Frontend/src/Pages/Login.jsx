@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Button from '../Components/Button';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { toast } from 'react-toastify';
+import API from '../API';
+import { useStatus } from '../Context/StatusContext';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
+  const { updateStatus } = useStatus()
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,9 +19,16 @@ const Login = () => {
     console.log(formData);
 
     try {
-      const res = await axios.post("http://localhost:8000/api/v1/users/login", formData, { withCredentials: true });
+      const res = await API.post("/login", formData, { withCredentials: true })
+      .then(response => {
+        console.log("Logged in successfully", response);
+      })
+      .catch(error => {
+        console.error("Login failed", error);
+      });
+      updateStatus('LoggedIn')
       toast.success(res.data.message);
-      navigate("/dashboard");  // Redirect user after login
+      navigate("/");  
     } catch (error) {
       toast.error(error.response?.data?.message || "Login Failed");
     }

@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import Button from '../Components/Button'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import { toast } from 'react-toastify'
+import API from '../API'
+import { useStatus } from '../Context/StatusContext'
 
 const Register = () => {
   const [formData, setFormData] = useState({ username: "", email: "", password: "" });
   const navigate = useNavigate();
+  const { updateStatus } = useStatus()
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,7 +19,9 @@ const Register = () => {
     console.log(formData);
 
     try {
-      const res = await axios.post("http://localhost:8000/api/v1/users/register", formData);
+      const res = await API.post("/register", formData);
+      updateStatus('registered')
+      console.log(res.data)
       toast.success(res.data.message);
       navigate("/login");
     } catch (error) {

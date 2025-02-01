@@ -10,6 +10,8 @@ Things I have done:
     models, controllers, middlewares, utils, db, routes
 4. I have made a asyncHandler so I wouldn't have to wrap everything   within try-catch or promise.
 5. All the authenticated user work such as logout and note making and getting is validated throught a verifyJWT function that is present in auth.middleware.js
+6. Since the Login was not working with CORS_ORIGIN = "*", I gave a whitelist variable that had the exact port frontend was running at, now it works.
+7. I have used a variable called Status who tells wheather the user is Unregistered, registered, logged in or logged out. This is done using Context API. So I have defined a StatusProvider in StatusContext file that provides the status variable all throughout the project since the App.jsx is wrapped up in StatusProvider hook in main.jsx.
 
 Things to Note:
 1. Database is always in another continent: So always use async await statements whenever trying to connect to the database.
