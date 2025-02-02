@@ -1,5 +1,8 @@
 The Noter - A Note making website. This website integrates the concept of Frontend and Backend together to provide the users ability to create all the Notes they want.
 This webiste uses MongoDB Atlas to store all the data present in it. 
+
+This web application has all the functionality from Registering, Login, Logout, Creating Notes and Getting Notes.
+
 Backend and frontend both servers can be started using "npm run dev" command.
 
 ![image](https://github.com/user-attachments/assets/52b5cbfd-b6dd-465e-a58c-4a4c0f03a3c0)
