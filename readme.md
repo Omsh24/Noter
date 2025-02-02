@@ -23,3 +23,6 @@ Things to Note:
 7. We can use '_' in place of parameters that have remained unused, such as res in auth.middleware.js.
 8. For activities such as logout we have to use the auth.middleware since we need to verify that the user is logged in in order to log them out.
 9. Always check the methods used: I had used the findByIdAndDelete instead of findByIdAndUpdate which gave me alot of errors.
+10. The Problem that I encountered while fetching the notes for the user was that I kept getting "user not found" error, so I added withCredentials: true in the function to make it work
+const response = await API.get("/getNoteHist", { withCredentials: true });
+11. Be sure to add withCredentials everytime you use a route that requires auth Middleware i.e., verifyJWT function in this case, otherwise you will get a 401 unauthorized access error.

@@ -17,8 +17,8 @@ router.route("/getuser").post(verifyJWT, getCurrentUser)
 router.route("/update").post(verifyJWT, updateAccountDetails)
 
 router.route("/note").post(verifyJWT, createNote)
-router.route("/getNote").post(verifyJWT, getNotes)
+router.route("/getNote").get(verifyJWT, getNotes)
 
-router.route("/getNoteHist").post(verifyJWT, getNoteHistory)
+router.route("/getNoteHist").get(verifyJWT, getNoteHistory)
 
 export default router;

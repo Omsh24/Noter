@@ -112,7 +112,8 @@ const loginUser = asyncHandler( async (req, res) => {
     // To handle cookies
     const options = {
         httpOnly: true,
-        secure: true
+        secure: true,
+        sameSite: true
     }
 
     return res.status(200)
@@ -208,17 +209,16 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
     return res.status(200).json(new ApiResponse(200, user, "Account details Updated successfully"))
 })
 
-const getNoteHistory = asyncHandler( async (req, res) => {
-    const user = await User.findById(req.user?._id)
-
-    if(!user){
-        throw new ApiError(402, "No user found")
+// user.controller.js (getCurrentUser function)
+const getNoteHistory = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.user._id).select('noteHistory');
+    if (!user) {
+        throw new ApiError(404, "User not found");
     }
 
-    return res.status(200).json(
-        new ApiResponse(201, user.noteHistory, "Note History fetched Successfully")
-    )
-} )
+    return res.status(200).json(new ApiResponse(200, user.noteHistory, "User notes fetched successfully"));
+});
+
 
 export { 
     registerUser, 

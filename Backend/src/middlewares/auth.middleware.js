@@ -11,8 +11,8 @@ export const verifyJWT = asyncHandler( async (req, res, next) => {
     try {
         // In postman in req header we are given something like: Authorization: Bearer <token_name>
         // so we are either extracting directly from cookies or from there
-        const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "")
-
+        const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "");
+        console.log("Received token: ", token);
         if(!token){
             throw new ApiError(401, "Invalid User Entered")
         }

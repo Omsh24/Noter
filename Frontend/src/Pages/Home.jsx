@@ -51,7 +51,12 @@ const Home = () => {
                         )
                     : (
                         (status === "LoggedIn" || status === "registered") 
-                        ? <Button name="Logout" fxn={handleLogout}/>
+                        ?   (
+                                <>
+                                    <Button name="Logout" fxn={handleLogout}/>
+                                    <Button name="Dashboard" navto="dashboard" />
+                                </>
+                            )
                         :   <></>
                     )
                 }

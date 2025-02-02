@@ -30,7 +30,8 @@ const createNote = asyncHandler( async (req, res) => {
             noteHistory: {
                 noteId: note._id,
                 title: note.title,
-                content: note.content
+                content: note.content,
+                createdAt: Date.now()
             }
         }
     })
@@ -51,6 +52,8 @@ const getNotes = asyncHandler( async (req, res) => {
         new ApiResponse(200, note, "Note fetched Successfully")
     )
 } )
+
+
 
 export {
     createNote,
