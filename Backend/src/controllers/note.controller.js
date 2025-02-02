@@ -14,6 +14,11 @@ const createNote = asyncHandler( async (req, res) => {
         throw new ApiError(401, "Title and content can not be null");
     }
 
+    const existingNote = await Note.findOne({ title, user: req.user._id });
+    if (existingNote) {
+        throw new ApiError(400, "A note with this title already exists");
+    }
+
     const note = await Note.create({
         title,
         content,
