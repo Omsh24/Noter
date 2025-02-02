@@ -31,11 +31,10 @@ const Home = () => {
     return (
         <div className='flex flex-col justify-center gap-y-[10%] align-middle w-full min-h-screen bg-red-200 mx-auto'>
             <div className='text-6xl font-bold self-center mb-[4%] px-[10%]'>
-                Welcome to the Note-App
+                Welcome to the Noter
             </div>
             <p className='text-sm font-semibold self-center w-[70%]'>
-                A simple note making application developed by me to provide the user ability to access and create all the notes they want
-                and also for me to learn how to use backend and frontend in the same file.
+                A Simple Note making website created to provide the users ability to create all the notes they want and to be able to access them easily with much trouble. So Welcome to Noter - The Note Making Site.    
             </p>
 
             {/* navigation section */}
