@@ -23,7 +23,7 @@ const Register = () => {
       updateStatus('registered')
       console.log(res.data)
       toast.success(res.data.message);
-      navigate("/login");
+      navigate("/dashboard");
     } catch (error) {
       toast.error(error.response?.data?.message || "Registration Failed");
     }

@@ -15,9 +15,9 @@ const Home = () => {
     const handleLogout = async () => {
         try {
           // Make the logout request
-          const res = await axios.post("http://localhost:8000/api/v1/users/logout", null, {
-            withCredentials: true, // This is important for sending cookies with the request
-          });
+          const res = await API.get("/getNoteHist", {
+                withCredentials: true, 
+            });
       
           console.log(res.data);
           updateStatus("Logged Out")

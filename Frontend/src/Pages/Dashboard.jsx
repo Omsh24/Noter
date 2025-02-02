@@ -9,6 +9,11 @@ const Dashboard = () => {
   const [notes, setNotes] = useState([]);
   const navigate = useNavigate();
 
+    function rev(){
+        let temp = [...notes];
+        temp.reverse()
+        setNotes(temp)
+    }
 
   // Fetch the user's noteHistory when the component mounts
   useEffect(() => {
@@ -19,13 +24,10 @@ const Dashboard = () => {
             });
             console.log(response);
             setNotes(response.data.data); 
-            let temp = [...notes]
-            temp.reverse()
-            setNotes(temp);
         } catch (err) {
             console.log("Error fetching Notes", err);
             toast.error("Error fetching notes");
-        }
+        }   
     };
     fetchNotes();
   }, []);
@@ -39,13 +41,12 @@ const Dashboard = () => {
         :   (
                 <ul className="flex flex-col gap-y-10">
                     {
-                        notes.map((note, index) => (
-                                <li key={index} className="bg-white p-4 shadow-md rounded-lg">
+                        notes.slice().reverse().map((note, index) => (
+                            <li key={index} className="bg-white p-4 shadow-md rounded-lg">
                                 <h3 className="text-xl font-semibold">{note.title}</h3>
                                 <p className="text-gray-700">{note.content}</p>
-                                </li>
-                            )
-                        )
+                            </li>
+                        ))
                     }
                 </ul>
             )
