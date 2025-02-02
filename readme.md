@@ -1,5 +1,12 @@
-This is a simple Full stack Web Application that aims to give every user a space where they can create notes for all their work. 
-Hence the name Noter.
+The Noter - A Note making website. This website integrates the concept of Frontend and Backend together to provide the users ability to create all the Notes they want.
+This webiste uses MongoDB Atlas to store all the data present in it. 
+Backend and frontend both servers can be started using "npm run dev" command.
+
+![image](https://github.com/user-attachments/assets/52b5cbfd-b6dd-465e-a58c-4a4c0f03a3c0)
+
+![image](https://github.com/user-attachments/assets/d43dbe43-fdd0-41e3-b341-f3134f37fd67)
+
+![image](https://github.com/user-attachments/assets/9e872342-e0d1-40e9-844c-92305ced6434)
 
 Things I have done:
 1. Downloaded nodemon, prettier, express, mongoose, cors,          cookie-parser, mongoose-aggregate-paginate-v2, bcrypt, jsonwebtoken
