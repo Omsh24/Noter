@@ -20,7 +20,7 @@ const createNote = asyncHandler( async (req, res) => {
         user: req.user._id
     })
 
-    await User.findByIdAndDelete(req.user._id, {
+    await User.findByIdAndUpdate(req.user._id, {
         $push: {
             noteHistory: {
                 noteId: note._id,

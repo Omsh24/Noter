@@ -5,7 +5,7 @@ import jwt from  "jsonwebtoken";
 import { ApiError } from "../utilis/ApiError.js";
 
 // This is a function that is made to authenticate that the user is valid
-// This will come in use when logging out 
+// This will come in use when logging out or when creating a note
 export const verifyJWT = asyncHandler( async (req, res, next) => {
     // Since we have sent cookies during logging in the user, we can use them here
     try {

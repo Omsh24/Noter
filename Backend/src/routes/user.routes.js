@@ -19,6 +19,6 @@ router.route("/update").post(verifyJWT, updateAccountDetails)
 router.route("/note").post(verifyJWT, createNote)
 router.route("/getNote").post(verifyJWT, getNotes)
 
-router.route("/getNotes").post(verifyJWT, getNoteHistory)
+router.route("/getNoteHist").post(verifyJWT, getNoteHistory)
 
 export default router;

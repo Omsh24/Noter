@@ -22,4 +22,4 @@ Things to Note:
 6. To add the functionality to upload files like videos and image we have to use something like multer and cloudinary to store them, they will be shown in website using url.
 7. We can use '_' in place of parameters that have remained unused, such as res in auth.middleware.js.
 8. For activities such as logout we have to use the auth.middleware since we need to verify that the user is logged in in order to log them out.
-
+9. Always check the methods used: I had used the findByIdAndDelete instead of findByIdAndUpdate which gave me alot of errors.
