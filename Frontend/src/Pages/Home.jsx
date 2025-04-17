@@ -1,66 +1,58 @@
 import React from 'react'
-import { NavLink, useNavigate } from "react-router-dom"
-import {toast} from "react-toastify"
+import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 import API from '../API'
-import axios from 'axios'
 import { useStatus } from '../Context/StatusContext.jsx'
 
 import Button from '../Components/Button.jsx'
 
 const Home = () => {
-
     const { updateStatus } = useStatus()
     const { status } = useStatus()
+    const navigate = useNavigate()
 
     const handleLogout = async () => {
         try {
-          // Make the logout request
-          const res = await API.get("/getNoteHist", {
-                withCredentials: true, 
-            });
-      
-          console.log(res.data);
-          updateStatus("Logged Out")
-          toast.success(res.data.message);
-          navigate("/login");
+            const res = await API.get("/getNoteHist", { withCredentials: true })
+            updateStatus("Logged Out")
+            toast.success(res.data.message)
+            navigate("/login")
         } catch (error) {
-          toast.error(error.response?.data?.message || "Logout Failed");
+            toast.error(error.response?.data?.message || "Logout Failed")
         }
-      };
+    }
 
     return (
-        <div className='flex flex-col justify-center gap-y-[10%] align-middle w-full min-h-screen bg-red-200 mx-auto'>
-            <div className='text-6xl font-bold self-center mb-[4%] px-[10%]'>
-                Welcome to the Noter
+        <div className="min-h-screen bg-gradient-to-r from-green-100 via-green-200 to-green-300 py-16 px-4">
+            {/* Main title section */}
+            <div className="text-center mb-12">
+                <h1 className="text-5xl font-extrabold text-gray-800 mb-4">Welcome to Noter</h1>
+                <p className="text-lg text-gray-600 font-medium max-w-2xl mx-auto">
+                    A simple note-making website to help you create and organize your notes effortlessly. 
+                    Welcome to Noter - your go-to tool for quick and easy note-taking.
+                </p>
             </div>
-            <p className='text-sm font-semibold self-center w-[70%]'>
-                A Simple Note making website created to provide the users ability to create all the notes they want and to be able to access them easily with much trouble. So Welcome to Noter - The Note Making Site.    
-            </p>
 
-            {/* navigation section */}
-            <div className='flex flex-row justify-evenly my-[5%]  '>
-
+            {/* Navigation buttons */}
+            <div className="flex justify-center gap-6">
                 {
                     (status === "Unregistered" || status === "Logged Out") 
-                    ?   (
-                            <>
-                                <Button name="Register" navto="register" /> 
-                                <Button name="Login" navto="login"/>
-                            </>
-                        )
-                    : (
+                    ? (
+                        <>
+                            <Button name="Register" navto="register" className="bg-green-600 text-white rounded-full px-6 py-3 hover:bg-green-700 transition duration-300" />
+                            <Button name="Login" navto="login" className="bg-green-600 text-white rounded-full px-6 py-3 hover:bg-green-700 transition duration-300" />
+                        </>
+                    ) : (
                         (status === "LoggedIn" || status === "registered") 
-                        ?   (
-                                <>
-                                    <Button name="Logout" fxn={handleLogout}/>
-                                    <Button name="Dashboard" navto="dashboard" />
-                                </>
-                            )
-                        :   <></>
+                        ? (
+                            <>
+                                <Button name="Logout" fxn={handleLogout} className="bg-red-600 text-white rounded-full px-6 py-3 hover:bg-red-700 transition duration-300" />
+                                <Button name="Dashboard" navto="dashboard" className="bg-blue-600 text-white rounded-full px-6 py-3 hover:bg-blue-700 transition duration-300" />
+                            </>
+                        ) : null
                     )
                 }
             </div>
-
         </div>
     )
 }

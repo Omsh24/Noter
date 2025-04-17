@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Button = ({ name, navto, para, fxn, clr="", trans = "text-black bg-red-400 hover:bg-red-600 transition-all duration-500 "}) => {
+const Button = ({ name, navto, para, fxn, clr="", trans = "text-black bg-green-400 hover:bg-red-600 transition-all duration-500 "}) => {
     const navigate = useNavigate()
 
     const handleOnClick = (e) => {
