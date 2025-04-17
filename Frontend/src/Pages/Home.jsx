@@ -31,6 +31,9 @@ const Home = () => {
                     A simple note-making website to help you create and organize your notes effortlessly. 
                     Welcome to Noter - your go-to tool for quick and easy note-taking.
                 </p>
+                <br />
+                <br />
+                <p className="text-lg text-gray-600 font-medium max-w-2xl mx-auto">For quick and easy Overview of the Application use username: 1 and email: 1 in login</p>
             </div>
 
             {/* Navigation buttons */}
