@@ -5,11 +5,13 @@ This web application has all the functionality from Registering, Login, Logout, 
 
 Backend and frontend both servers can be started using "npm run dev" command.
 
-![image](https://github.com/user-attachments/assets/52b5cbfd-b6dd-465e-a58c-4a4c0f03a3c0)
+![image](https://github.com/user-attachments/assets/5a6f65b1-3c1e-4848-b12f-0c11a8703f57)
 
-![image](https://github.com/user-attachments/assets/d43dbe43-fdd0-41e3-b341-f3134f37fd67)
+![image](https://github.com/user-attachments/assets/7b2eb94d-ddc8-4cfe-8b0e-3a00ad1107b3)
 
-![image](https://github.com/user-attachments/assets/9e872342-e0d1-40e9-844c-92305ced6434)
+![image](https://github.com/user-attachments/assets/846276e7-8912-4d46-a355-1f1e96237952)
+
+![image](https://github.com/user-attachments/assets/a3ab3356-1837-436e-bc93-242abc8dcdf9)
 
 Things I have done:
 1. Downloaded nodemon, prettier, express, mongoose, cors,          cookie-parser, mongoose-aggregate-paginate-v2, bcrypt, jsonwebtoken
